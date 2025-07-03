@@ -1,3 +1,4 @@
+using System.Diagnostics;
 public static class Arrays
 {
     /// <summary>
@@ -13,7 +14,16 @@ public static class Arrays
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
 
-        return []; // replace this return statement with your own
+        //first I created a variable to append my result in each intereaction
+        double[] result = new double[length];
+        // The code iter for each element making sure to cover all of them
+        for (int i = 0; i < length; i++)
+        {
+            //then I made the calculation multiplying the number with the idex, and sum 1 to keep multiplying until the lenght o parameter
+            result[i] = number * (i + 1);
+        }
+
+        return result; // replace this return statement with your own
     }
 
     /// <summary>
@@ -29,5 +39,21 @@ public static class Arrays
         // Remember: Using comments in your program, write down your process for solving this problem
         // step by step before you write the code. The plan should be clear enough that it could
         // be implemented by another person.
+
+        //declare a variable to count the data
+        int n = data.Count;
+
+        //then check if the amount == data, so we don't have to rotate the list
+        if (amount == n || amount == 0)
+            return;
+
+        // This part gets the split the data to know which one goes first and what last
+        List<int> tail = data.GetRange(n - amount, amount);
+        List<int> head = data.GetRange(0, n - amount);
+
+        //clear the list and organize it again using our previous variables
+        data.Clear();
+        data.AddRange(tail);
+        data.AddRange(head);
     }
 }
